@@ -2,7 +2,10 @@
 #include <string.h>
 
 int main(void) {
+    int character;
+    int index = 0;
     char path[260];
+    char text[512];
 
     printf("Welcome to SAR!\n");
 
@@ -16,6 +19,13 @@ int main(void) {
         printf("Error: Could not open file.\n");
     } else {
         printf("File opened successfully!\n");
+        while (index < 511 && (character = fgetc(file)) != EOF) {
+            text[index] = character;
+            index++;
+        }
+        text[index] = '\0';
+        printf("%s\n", text);
+
         fclose(file);
     }
 
